@@ -1,22 +1,19 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
-	import { spring } from 'svelte/motion';
-	import type { Spring } from 'svelte/motion';
 	import { T, useFrame, useThrelte } from '@threlte/core';
 	import { OrbitControls, Text, interactivity } from '@threlte/extras';
 
 	import Tree from './models/Tree.svelte';
 	import Mountain from './models/Mountain.svelte';
 	import { Color } from 'three';
-	import { getRandomHexColor, invertHexColor } from '$lib/utils';
+	import { invertHexColor } from '$lib/utils';
 	import Gnome from './models/Gnome.svelte';
+	import { lightColor } from '$lib/stores';
+	import ColorBall from './ColorBall.svelte';
 
-	let showText = false;
+	let showText = true;
 
 	// #fefcdb -- default dark
 	// #17bed4 -- default light
-
-	const lightColor = writable('#fefcdb');
 
 	const dirLight = {
 		position: [130, 200, 260] as [number, number, number],
@@ -27,23 +24,6 @@
 	};
 
 	let textRotY: number = 0;
-
-	//Sphere controls
-	let sphereScale: Spring<number> = spring(1);
-	const pointerenter = () => {
-		$sphereScale = 1.5;
-		showText = true;
-	};
-	const pointerleave = () => {
-		$sphereScale = 1;
-		showText = false;
-	};
-	const click = () => {
-		// $scale += 1;
-		lightColor.set(getRandomHexColor());
-		scene.background = new Color(invertHexColor($lightColor));
-		// console.log($lightColor, invertHexColor($lightColor));
-	};
 
 	const { scene } = useThrelte();
 	scene.background = new Color(invertHexColor($lightColor));
@@ -63,7 +43,7 @@
 		maxDistance={500}
 		minDistance={100}
 	/>
-  <!-- <OrbitControls /> -->
+	<!-- <OrbitControls /> -->
 </T.PerspectiveCamera>
 
 <T.AmbientLight color={invertHexColor($lightColor)} intensity={2} />
@@ -87,35 +67,22 @@
 <Tree position={[33, -5.9, 21.5]} rotation={[0, 0, 0]} />
 <Tree position={[24, -17, 36]} rotation={[Math.PI / 10, 0, 0]} />
 
-<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]}/>
+<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]} />
 
-<T.Group position={[5, 40, 10]}>
+{#if showText}
 	<Text
-		rotation.y={textRotY}
+		on:click={(e) => (showText = !showText)}
+		position={[5, 40, 10]}
 		text="Välkommen!"
+		rotation.y={textRotY}
 		anchorX="center"
 		fontSize={3}
 		castShadow
 		receiveShadow
 	/>
-</T.Group>
+{/if}
 
-<T.Group position={[30, 30, 35]}>
-	{#if showText}
-		<Text castShadow anchorX="center" anchorY={-6} text={$lightColor} fontSize={1} />
-	{/if}
-	<T.Mesh
-		castShadow
-		receiveShadow
-		scale={$sphereScale}
-		on:click={click}
-		on:pointerenter={pointerenter}
-		on:pointerleave={pointerleave}
-	>
-		<T.SphereGeometry args={[2.5, 64, 64]} />
-		<T.MeshStandardMaterial color={$lightColor} />
-	</T.Mesh>
-</T.Group>
+<ColorBall {scene} position={[30, 30, 35]} />
 
 <!-- 
   https://next.threlte.xyz/docs/learn/basics/events
