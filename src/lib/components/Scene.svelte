@@ -8,27 +8,14 @@
 	import Tree from './models/Tree.svelte';
 	import Mountain from './models/Mountain.svelte';
 	import { Color } from 'three';
-
-
-	const getRandomHexColor = () =>
-		`#${Math.floor(Math.random() * 16777215)
-			.toString(16)
-			.padStart(6, '0')}`;
-
-	const invertHexColor = (hexColor: string) => {
-		if (hexColor.startsWith('#')) {
-			hexColor = hexColor.slice(1);
-		}
-		const r = (255 - parseInt(hexColor.slice(0, 2), 16)).toString(16).padStart(2, '0');
-		const g = (255 - parseInt(hexColor.slice(2, 4), 16)).toString(16).padStart(2, '0');
-		const b = (255 - parseInt(hexColor.slice(4, 6), 16)).toString(16).padStart(2, '0');
-
-		return `#${r}${g}${b}`;
-	};
+	import { getRandomHexColor, invertHexColor } from '$lib/utils';
 
 	let showText = false;
 
-	const lightColor = writable('#626476');
+	// #fefcdb -- default dark
+	// #17bed4 -- default light
+
+	const lightColor = writable('#fefcdb');
 
 	const dirLight = {
 		position: [130, 200, 260] as [number, number, number],
@@ -38,47 +25,51 @@
 		shadowCamSideLength: 35
 	};
 
-	let rotationY: number = 0;
+	let textRotY: number = 0;
 
 	//Sphere controls
-	let scale: Spring<number> = spring(1);
+	let sphereScale: Spring<number> = spring(1);
 	const pointerenter = () => {
-		$scale = 1.5;
+		$sphereScale = 1.5;
 		showText = true;
 	};
 	const pointerleave = () => {
-		$scale = 1;
+		$sphereScale = 1;
 		showText = false;
 	};
 	const click = () => {
 		// $scale += 1;
 		lightColor.set(getRandomHexColor());
-    scene.background = new Color(invertHexColor($lightColor));
-
-		console.log($lightColor, invertHexColor($lightColor));
+		scene.background = new Color(invertHexColor($lightColor));
+		// console.log($lightColor, invertHexColor($lightColor));
 	};
 
-  
-  const { scene } = useThrelte();
-  scene.background = new Color(invertHexColor($lightColor));
+	const { scene } = useThrelte();
+	scene.background = new Color(invertHexColor($lightColor));
 
 	interactivity();
 	useFrame((_, delta) => {
-		rotationY -= 0.5 * delta;
+		textRotY -= 0.5 * delta;
 	});
 </script>
 
-
-<T.PerspectiveCamera makeDefault position={[60, 110, 240]} fov={35} >
-	<OrbitControls autoRotate autoRotateSpeed={0.5} maxPolarAngle={Math.PI / 2.5} enablePan={false}/>
+<T.PerspectiveCamera makeDefault position={[60, 110, 240]} fov={35}>
+	<OrbitControls
+		autoRotate
+		autoRotateSpeed={0.5}
+		maxPolarAngle={Math.PI / 2.5}
+		enablePan={false}
+		maxDistance={500}
+		minDistance={100}
+	/>
 </T.PerspectiveCamera>
 
 <T.AmbientLight color={invertHexColor($lightColor)} intensity={2} />
 <T.DirectionalLight
-	position={dirLight.position}
-	color={dirLight.color}
-	intensity={dirLight.intensity}
 	castShadow
+	color={'#626476'}
+	position={dirLight.position}
+	intensity={dirLight.intensity}
 	shadow.mapSize.width={dirLight.shadowMapSize}
 	shadow.mapSize.height={dirLight.shadowMapSize}
 	shadow.camera.top={dirLight.shadowCamSideLength}
@@ -96,7 +87,7 @@
 
 <T.Group position={[5, 40, 10]}>
 	<Text
-		rotation.y={rotationY}
+		rotation.y={textRotY}
 		text="Välkommen!"
 		anchorX="center"
 		fontSize={3}
@@ -112,7 +103,7 @@
 	<T.Mesh
 		castShadow
 		receiveShadow
-		scale={$scale}
+		scale={$sphereScale}
 		on:click={click}
 		on:pointerenter={pointerenter}
 		on:pointerleave={pointerleave}
