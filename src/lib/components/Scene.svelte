@@ -9,6 +9,7 @@
 	import Mountain from './models/Mountain.svelte';
 	import { Color } from 'three';
 	import { getRandomHexColor, invertHexColor } from '$lib/utils';
+	import Gnome from './models/Gnome.svelte';
 
 	let showText = false;
 
@@ -62,6 +63,7 @@
 		maxDistance={500}
 		minDistance={100}
 	/>
+  <!-- <OrbitControls /> -->
 </T.PerspectiveCamera>
 
 <T.AmbientLight color={invertHexColor($lightColor)} intensity={2} />
@@ -84,6 +86,8 @@
 <Tree position={[22, -5, 22]} />
 <Tree position={[33, -5.9, 21.5]} rotation={[0, 0, 0]} />
 <Tree position={[24, -17, 36]} rotation={[Math.PI / 10, 0, 0]} />
+
+<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]}/>
 
 <T.Group position={[5, 40, 10]}>
 	<Text
