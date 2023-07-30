@@ -41,7 +41,6 @@ Title: Giant Low Poly Tree
 	};
 
 	const gltf = useGltf<GLTFResult>('/Tree.glb');
-
 	const component = forwardEventHandlers();
 </script>
 

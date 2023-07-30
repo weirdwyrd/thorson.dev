@@ -60,14 +60,18 @@
 	shadow.camera.left={-dirLight.shadowCamSideLength}
 />
 
-<Mountain position={[0, -25, 0]} rotation={[0, Math.PI, 0]} />
+<T.Group>
+	<Mountain position={[0, -25, 0]} rotation={[0, Math.PI, 0]} />
 
-<Tree position={[26, -3, 18]} rotation={[0, Math.PI, 0]} />
-<Tree position={[22, -5, 22]} />
-<Tree position={[33, -5.9, 21.5]} rotation={[0, 0, 0]} />
-<Tree position={[24, -17, 36]} rotation={[Math.PI / 10, 0, 0]} />
+	<Tree position={[26, -3, 18]} rotation={[0, Math.PI, 0]} />
+	<Tree position={[22, -5, 22]} />
+	<Tree position={[33, -5.9, 21.5]} rotation={[0, 0, 0]} />
+	<Tree position={[24, -17, 36]} rotation={[Math.PI / 10, 0, 0]} />
 
-<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]} />
+	<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]} />
+</T.Group>
+
+<ColorBall {scene} position={[30, 30, 35]} />
 
 {#if showText}
 	<Text
@@ -81,8 +85,6 @@
 		receiveShadow
 	/>
 {/if}
-
-<ColorBall {scene} position={[30, 30, 35]} />
 
 <!-- 
   https://next.threlte.xyz/docs/learn/basics/events

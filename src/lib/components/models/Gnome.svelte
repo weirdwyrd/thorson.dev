@@ -8,80 +8,87 @@ Title: Gnome
 -->
 
 <script lang="ts">
-  import type * as THREE from 'three'
-  import { Group } from 'three'
-  import { T, type Props, type Events, type Slots, forwardEventHandlers } from '@threlte/core'
-  import { useGltf } from '@threlte/extras'
+	import type * as THREE from 'three';
+	import { Group } from 'three';
+	import { T, type Props, type Events, type Slots, forwardEventHandlers } from '@threlte/core';
+	import { useGltf } from '@threlte/extras';
 
-  type $$Props = Props<THREE.Group>
-  type $$Events = Events<THREE.Group>
-  type $$Slots = Slots<THREE.Group> & { fallback: {}; error: { error: any } }
+	type $$Props = Props<THREE.Group>;
+	type $$Events = Events<THREE.Group>;
+	type $$Slots = Slots<THREE.Group> & { fallback: {}; error: { error: any } };
 
-  export const ref = new Group()
+	export const ref = new Group();
 
-  type GLTFResult = {
-    nodes: {
-      Object_5: THREE.Mesh
-      Object_7: THREE.Mesh
-      Object_9: THREE.Mesh
-      Object_11: THREE.Mesh
-      Object_13: THREE.Mesh
-      Object_15: THREE.Mesh
-      Object_17: THREE.Mesh
-      Object_19: THREE.Mesh
-      Object_21: THREE.Mesh
-      Object_23: THREE.Mesh
-    }
-    materials: {
-      material_0: THREE.MeshPhysicalMaterial
-    }
-  }
+	type GLTFResult = {
+		nodes: {
+			Object_5: THREE.Mesh;
+			Object_7: THREE.Mesh;
+			Object_9: THREE.Mesh;
+			Object_11: THREE.Mesh;
+			Object_13: THREE.Mesh;
+			Object_15: THREE.Mesh;
+			Object_17: THREE.Mesh;
+			Object_19: THREE.Mesh;
+			Object_21: THREE.Mesh;
+			Object_23: THREE.Mesh;
+		};
+		materials: {
+			material_0: THREE.MeshPhysicalMaterial;
+		};
+	};
 
-  const gltf = useGltf<GLTFResult>('/Gnome.glb')
-
-  const component = forwardEventHandlers()
+	const gltf = useGltf<GLTFResult>('/Gnome.glb');
+	const component = forwardEventHandlers();
 </script>
 
 <T is={ref} dispose={false} {...$$restProps} bind:this={$component}>
-  {#await gltf}
-    <slot name="fallback" />
-  {:then gltf}
-    <T.Mesh geometry={gltf.nodes.Object_5.geometry} material={gltf.materials.material_0} />
-    <T.Mesh geometry={gltf.nodes.Object_7.geometry} material={gltf.materials.material_0} rotation={[0, -0.44, 0]} />
-    <T.Mesh geometry={gltf.nodes.Object_9.geometry} material={gltf.materials.material_0} rotation={[0, 0.44, 0]} />
-    <T.Mesh
-      geometry={gltf.nodes.Object_11.geometry}
-      material={gltf.materials.material_0}
-      rotation={[0, 0, -Math.PI / 9]}
-    />
-    <T.Mesh
-      geometry={gltf.nodes.Object_13.geometry}
-      material={gltf.materials.material_0}
-      rotation={[0, 0, Math.PI / 9]}
-    />
-    <T.Mesh
-      geometry={gltf.nodes.Object_15.geometry}
-      material={gltf.materials.material_0}
-      position={[-0.04, -0.03, -0.06]}
-      rotation={[0.11, -0.22, -0.09]}
-    />
-    <T.Mesh
-      geometry={gltf.nodes.Object_17.geometry}
-      material={gltf.materials.material_0}
-      position={[-0.04, -0.03, -0.06]}
-      rotation={[0.17, 0.22, -0.17]}
-    />
-    <T.Mesh
-      geometry={gltf.nodes.Object_19.geometry}
-      material={gltf.materials.material_0}
-      position={[-0.04, -0.03, -0.06]}
-      rotation={[0.17, 0, -0.26]}
-    />
-    <T.Mesh geometry={gltf.nodes.Object_21.geometry} material={gltf.materials.material_0} />
-    <T.Mesh geometry={gltf.nodes.Object_23.geometry} material={gltf.materials.material_0} />
-  {:catch error}
-    <slot name="error" {error} />
-  {/await}
+	{#await gltf}
+		<slot name="fallback" />
+	{:then gltf}
+		<T.Mesh geometry={gltf.nodes.Object_5.geometry} material={gltf.materials.material_0} />
+		<T.Mesh
+			geometry={gltf.nodes.Object_7.geometry}
+			material={gltf.materials.material_0}
+			rotation={[0, -0.44, 0]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_9.geometry}
+			material={gltf.materials.material_0}
+			rotation={[0, 0.44, 0]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_11.geometry}
+			material={gltf.materials.material_0}
+			rotation={[0, 0, -Math.PI / 9]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_13.geometry}
+			material={gltf.materials.material_0}
+			rotation={[0, 0, Math.PI / 9]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_15.geometry}
+			material={gltf.materials.material_0}
+			position={[-0.04, -0.03, -0.06]}
+			rotation={[0.11, -0.22, -0.09]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_17.geometry}
+			material={gltf.materials.material_0}
+			position={[-0.04, -0.03, -0.06]}
+			rotation={[0.17, 0.22, -0.17]}
+		/>
+		<T.Mesh
+			geometry={gltf.nodes.Object_19.geometry}
+			material={gltf.materials.material_0}
+			position={[-0.04, -0.03, -0.06]}
+			rotation={[0.17, 0, -0.26]}
+		/>
+		<T.Mesh geometry={gltf.nodes.Object_21.geometry} material={gltf.materials.material_0} />
+		<T.Mesh geometry={gltf.nodes.Object_23.geometry} material={gltf.materials.material_0} />
+	{:catch error}
+		<slot name="error" {error} />
+	{/await}
 
-  <slot {ref} />
+	<slot {ref} />
 </T>

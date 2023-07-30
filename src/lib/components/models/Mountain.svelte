@@ -8,41 +8,45 @@ Title: Low Poly mountain
 -->
 
 <script lang="ts">
-  import type * as THREE from 'three'
-  import { Group } from 'three'
-  import { T, type Props, type Events, type Slots, forwardEventHandlers } from '@threlte/core'
-  import { useGltf } from '@threlte/extras'
+	import type * as THREE from 'three';
+	import { Group } from 'three';
+	import { T, type Props, type Events, type Slots, forwardEventHandlers } from '@threlte/core';
+	import { useGltf } from '@threlte/extras';
 
-  type $$Props = Props<THREE.Group>
-  type $$Events = Events<THREE.Group>
-  type $$Slots = Slots<THREE.Group> & { fallback: {}; error: { error: any } }
+	type $$Props = Props<THREE.Group>;
+	type $$Events = Events<THREE.Group>;
+	type $$Slots = Slots<THREE.Group> & { fallback: {}; error: { error: any } };
 
-  export const ref = new Group()
+	export const ref = new Group();
 
-  type GLTFResult = {
-    nodes: {
-      Object_5: THREE.Mesh
-    }
-    materials: {
-      Rock: THREE.MeshStandardMaterial
-    }
-  }
+	type GLTFResult = {
+		nodes: {
+			Object_5: THREE.Mesh;
+		};
+		materials: {
+			Rock: THREE.MeshStandardMaterial;
+		};
+	};
 
-  const gltf = useGltf<GLTFResult>('/Mountain.glb')
-
-  const component = forwardEventHandlers()
+	const gltf = useGltf<GLTFResult>('/Mountain.glb');
+	const component = forwardEventHandlers();
 </script>
 
 <T is={ref} dispose={false} {...$$restProps} bind:this={$component}>
-  {#await gltf}
-    <slot name="fallback" />
-  {:then gltf}
-    <T.Mesh geometry={gltf.nodes.Object_5.geometry} material={gltf.materials.Rock}  receiveShadow castShadow>
-      <T.MeshStandardMaterial envMapIntensity={0.3} color='#35333b'/>
-    </T.Mesh>
-  {:catch error}
-    <slot name="error" {error} />
-  {/await}
+	{#await gltf}
+		<slot name="fallback" />
+	{:then gltf}
+		<T.Mesh
+			geometry={gltf.nodes.Object_5.geometry}
+			material={gltf.materials.Rock}
+			receiveShadow
+			castShadow
+		>
+			<T.MeshStandardMaterial envMapIntensity={0.3} color="#35333b" />
+		</T.Mesh>
+	{:catch error}
+		<slot name="error" {error} />
+	{/await}
 
-  <slot {ref} />
+	<slot {ref} />
 </T>
