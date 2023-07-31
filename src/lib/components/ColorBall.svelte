@@ -5,7 +5,7 @@
 	import { Text } from '@threlte/extras';
 
 	import { getRandomHexColor, hexToRGB } from '$lib/utils';
-	import { bTween, gTween, rTween, rgbColorTween } from '$lib/stores';
+	import { bTween, gTween, rTween, rgbColorTween, showWelcome } from '$lib/stores';
 
 	export let position: [number, number, number];
 
@@ -37,6 +37,7 @@
 		receiveShadow
 		scale={$sphereScale}
 		on:click={click}
+		on:click={(e) => (showWelcome.set(false))}
 		on:pointerenter={pointerenter}
 		on:pointerleave={pointerleave}
 	>
