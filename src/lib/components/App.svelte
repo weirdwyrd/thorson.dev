@@ -20,7 +20,7 @@
 		}}
 		class="load-wrapper"
 	>
-  <LoadingRing />
+		<LoadingRing />
 	</div>
 {/if}
 
@@ -43,5 +43,4 @@
 		justify-content: center;
 		color: white;
 	}
-
 </style>

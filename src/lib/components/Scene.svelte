@@ -5,28 +5,23 @@
 	import Tree from './models/Tree.svelte';
 	import Mountain from './models/Mountain.svelte';
 	import { Color } from 'three';
-	import { invertHexColor } from '$lib/utils';
 	import Gnome from './models/Gnome.svelte';
-	import { lightColor } from '$lib/stores';
+	import { rgbInvertedColorTween } from '$lib/stores';
 	import ColorBall from './ColorBall.svelte';
-
-	let showText = true;
-
-	// #fefcdb -- default dark
-	// #17bed4 -- default light
 
 	const dirLight = {
 		position: [130, 200, 260] as [number, number, number],
-		color: $lightColor,
+		color: '#626476',
 		intensity: 10,
 		shadowMapSize: 2048,
 		shadowCamSideLength: 35
 	};
 
+	let showText = true;
 	let textRotY: number = 0;
 
 	const { scene } = useThrelte();
-	scene.background = new Color(invertHexColor($lightColor));
+	$: scene.background = new Color($rgbInvertedColorTween);
 
 	interactivity();
 	useFrame((_, delta) => {
@@ -46,10 +41,10 @@
 	<!-- <OrbitControls /> -->
 </T.PerspectiveCamera>
 
-<T.AmbientLight color={invertHexColor($lightColor)} intensity={2} />
+<T.AmbientLight color={$rgbInvertedColorTween} intensity={2} />
 <T.DirectionalLight
 	castShadow
-	color={'#626476'}
+	color={dirLight.color}
 	position={dirLight.position}
 	intensity={dirLight.intensity}
 	shadow.mapSize.width={dirLight.shadowMapSize}
@@ -71,7 +66,7 @@
 	<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]} />
 </T.Group>
 
-<ColorBall {scene} position={[30, 30, 35]} />
+<ColorBall position={[30, 30, 35]} />
 
 {#if showText}
 	<Text
