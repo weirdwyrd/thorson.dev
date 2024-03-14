@@ -5,6 +5,9 @@ import { hexToRGB } from './utils';
 
 export const showWelcome = writable(true);
 
+export const quoteText = writable("A wise man once inspected a sphere, and was better for it.");
+
+
 // #fefcdb -- default dark  RGB 254, 252, 219
 // #17bed4 -- default light
 
@@ -27,3 +30,12 @@ export const rgbInvertedColorTween = derived(
 		)})`;
 	}
 );
+
+// export const rgbTextColorTween = derived(
+// 	[rTween, gTween, bTween],
+// 	([rTween, gTween, bTween]) => {
+// 		return `rgb(${Math.floor(255 - rTween * 0.25 )},${Math.floor(255 - gTween * 0.25)},${Math.floor(
+// 			255 - bTween * 0.25
+// 		)})`;
+// 	}
+// );
