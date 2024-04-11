@@ -108,8 +108,8 @@
 	castShadow
 	receiveShadow
 	color={$rgbColorTween}
-	maxWidth={438}
-	curveRadius={-70}
+	maxWidth={470}
+	curveRadius={-75}
 	textAlign={'justify'}
 	/>
 </T.Group>
