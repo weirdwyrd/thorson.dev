@@ -1,12 +1,17 @@
 import { cubicIn } from 'svelte/easing';
 import { tweened } from 'svelte/motion';
-import { derived, writable } from 'svelte/store';
+import { derived, writable, type Writable } from 'svelte/store';
 import { hexToRGB } from './utils';
 
 export const showWelcome = writable(true);
 
 export const quoteText = writable("A wise man once inspected a sphere, and was better for it.");
+export const quoteOptions: Writable<Quote[]> = writable();
 
+
+/**
+ * COLOR LOGIC
+ */
 
 // #fefcdb -- default dark  RGB 254, 252, 219
 // #17bed4 -- default light
