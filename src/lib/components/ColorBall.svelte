@@ -29,8 +29,10 @@
 
 		const qOptions = $quoteOptions;
 		const randomIndex = Math.floor((Math.random() * qOptions.length));
-		quoteText.set(qOptions[randomIndex].text);
-
+		const selectedQuote = qOptions[randomIndex];
+		let text = `"${selectedQuote.text}"\n\t${selectedQuote.author}`;
+		text = !selectedQuote.material ? text : text + `\t-\t${selectedQuote.material}`;
+		quoteText.set(text);
 	};
 </script>
 
