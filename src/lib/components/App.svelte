@@ -11,7 +11,13 @@
 		duration: 600
 	});
 	$: tweenedProgress.set($progress);
+
+
 </script>
+
+<!-- <svelte:head>
+	<script async defer src="https://apis.google.com/js/api.js" on:load={gapiLoad}></script>
+</svelte:head> -->
 
 {#if $tweenedProgress < 1}
 	<div
