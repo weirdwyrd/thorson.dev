@@ -1,18 +1,24 @@
 <script lang="ts">
 	import { Color } from 'three';
 	import { T, useFrame, useThrelte } from '@threlte/core';
-	import { OrbitControls, Text, interactivity } from '@threlte/extras';
+	import { Text, interactivity } from '@threlte/extras';
 
-	import { rgbColorTween, rgbInvertedColorTween, quoteText } from '$lib/stores';
-
+	import {
+		rgbColorTween,
+		rgbInvertedColorTween,
+		quoteText,
+		cameraControls
+	} from '$lib/stores';
 	import Tree from './models/Tree.svelte';
 	import Gnome from './models/Gnome.svelte';
 	import ColorBall from './ColorBall.svelte';
 	import StarField from './StarField.svelte';
 	import Mountain from './models/Mountain.svelte';
+	import ColorCube from './ColorCube.svelte';
+	import CameraControls from './CameraControls.svelte';
 
 	const dirLight = {
-		position: [130, 200, 260] as [number, number, number],
+		position: [130, 200, 260] as Coordinates,
 		intensity: 10,
 		shadowMapSize: 2048,
 		shadowCamSideLength: 50
@@ -29,17 +35,27 @@
 	});
 </script>
 
-<T.PerspectiveCamera makeDefault position={[60, 80, 250]} fov={35}>
-	<OrbitControls
-		autoRotate
-		autoRotateSpeed={-0.20}
-		maxPolarAngle={Math.PI / 2}
-		minPolarAngle={Math.PI / 6}
-		enablePan={false}
-		maxDistance={350}
+<!-- NEW camera-controls https://threlte.xyz/docs/examples/camera/camera-controls -->
+<T.PerspectiveCamera
+	makeDefault
+	position={[60, 80, 250]}
+	fov={35}
+	on:create={({ ref }) => {
+		ref.lookAt(0, 1, 0);
+	}}
+>
+	<CameraControls
+		on:create={({ ref }) => {
+			//@ts-ignore
+			$cameraControls = ref;
+		}}
+		autoRotate={true}
+		autoRotateSpeed={0.5}
 		minDistance={100}
+		maxDistance={1500}
+		minPolarAngle={Math.PI / 6}
+		maxPolarAngle={Math.PI / 2}
 	/>
-	<!-- <OrbitControls /> -->
 </T.PerspectiveCamera>
 
 <T.AmbientLight color={$rgbInvertedColorTween} intensity={5} />
@@ -66,30 +82,50 @@
 </T.Group>
 
 <ColorBall position={[30, 30, 35]} />
+<!-- <ColorCube position={[30, 60, 35]} /> -->
 
-<StarField color={$rgbColorTween} size={1} amount={4000} radius={700} speed={6} direction={[0.75, 0.5, 0.5]}/>
-<StarField color={$rgbColorTween} size={0.75} amount={1200} radius={600} speed={7} direction={[-0.75, -0.1, -0.65]}/>
-<StarField color={$rgbColorTween} size={3} amount={1200} radius={3000} speed={2} direction={[0.45, 0.1, -0.35]}/>
+<StarField
+	color={$rgbColorTween}
+	size={1}
+	amount={4000}
+	radius={700}
+	speed={6}
+	direction={[0.75, 0.5, 0.5]}
+/>
+<StarField
+	color={$rgbColorTween}
+	size={0.75}
+	amount={1200}
+	radius={600}
+	speed={7}
+	direction={[-0.75, -0.1, -0.65]}
+/>
+<StarField
+	color={$rgbColorTween}
+	size={3}
+	amount={1200}
+	radius={3000}
+	speed={2}
+	direction={[0.45, 0.1, -0.35]}
+/>
 
-<!-- TODO: make text glow the inverse color -->
 <T.Group rotation={[0, textRotY, 0]}>
 	<Text
-	position={[-4, 25, 70]}
-	text={$quoteText}
-	anchorX="left"
-	fontSize={3}
-	castShadow
-	receiveShadow
-	color={$rgbColorTween}
-	maxWidth={470}
-	curveRadius={-75}
-	textAlign={'justify'}
-	outlineBlur={5}
-	outlineColor={$rgbInvertedColorTween}
-	outlineOpacity={0.5}
+		position={[-4, 25, 70]}
+		text={$quoteText}
+		anchorX="left"
+		fontSize={3}
+		castShadow
+		receiveShadow
+		color={$rgbColorTween}
+		maxWidth={470}
+		curveRadius={-75}
+		textAlign={'justify'}
+		outlineBlur={4}
+		outlineColor={$rgbInvertedColorTween}
+		outlineOpacity={0.75}
 	/>
 </T.Group>
-<!-- {/if} -->
 
 <!-- 
   https://next.threlte.xyz/docs/learn/basics/events

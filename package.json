@@ -41,6 +41,7 @@
   },
   "type": "module",
   "dependencies": {
+    "camera-controls": "^2.8.3",
     "google-auth-library": "^9.7.0"
   }
 }
