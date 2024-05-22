@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Color } from 'three';
+	import { CircleGeometry, Color } from 'three';
 	import { T, useFrame, useThrelte } from '@threlte/core';
 	import { Text, interactivity } from '@threlte/extras';
 
@@ -16,6 +16,8 @@
 	import Mountain from './models/Mountain.svelte';
 	import ColorCube from './ColorCube.svelte';
 	import CameraControls from './CameraControls.svelte';
+	import Fox from './models/Fox.svelte';
+	import { goto } from '$app/navigation';
 
 	const dirLight = {
 		position: [130, 200, 260] as Coordinates,
@@ -33,6 +35,11 @@
 	useFrame((_, delta) => {
 		textRotY -= 0.01 * delta;
 	});
+
+	function onFoxClick(event: Event) {
+		// goto('/presentations/fox')
+	}
+
 </script>
 
 <!-- NEW camera-controls https://threlte.xyz/docs/examples/camera/camera-controls -->
@@ -72,6 +79,27 @@
 	shadow.camera.left={-dirLight.shadowCamSideLength}
 />
 
+<T.Group rotation={[0, textRotY, 0]}>
+	<Text
+		position={[-4, 25, 70]}
+		text={$quoteText}
+		anchorX="left"
+		fontSize={3}
+		castShadow
+		receiveShadow
+		color={$rgbColorTween}
+		maxWidth={470}
+		curveRadius={-75}
+		textAlign={'justify'}
+		outlineBlur={4}
+		outlineColor={$rgbInvertedColorTween}
+		outlineOpacity={0.75}
+	/>
+</T.Group>
+
+<ColorBall position={[30, 30, 35]} />
+<!-- <ColorCube position={[30, 60, 35]} /> -->
+
 <T.Group>
 	<Mountain position={[0, -25, 0]} rotation={[0, Math.PI, 0]} />
 	<Tree position={[26, -3, 18]} rotation={[0, Math.PI, 0]} />
@@ -79,10 +107,10 @@
 	<Tree position={[33, -5.9, 21.5]} rotation={[0, 0, 0]} />
 	<Tree position={[24, -17, 36]} rotation={[Math.PI / 10, 0, 0]} />
 	<Gnome castShadow receiveShadow position={[33, -5.3, 20]} rotation={[0, -Math.PI / 1.5, 0]} />
+	<Fox on:click={(e) => onFoxClick(e)} position={[22, -16, 36]} rotation={[0, 0, 0]} />
 </T.Group>
 
-<ColorBall position={[30, 30, 35]} />
-<!-- <ColorCube position={[30, 60, 35]} /> -->
+<!-- TODO: add circle fog cloud around base of mountain -->
 
 <StarField
 	color={$rgbColorTween}
@@ -109,23 +137,6 @@
 	direction={[0.45, 0.1, -0.35]}
 />
 
-<T.Group rotation={[0, textRotY, 0]}>
-	<Text
-		position={[-4, 25, 70]}
-		text={$quoteText}
-		anchorX="left"
-		fontSize={3}
-		castShadow
-		receiveShadow
-		color={$rgbColorTween}
-		maxWidth={470}
-		curveRadius={-75}
-		textAlign={'justify'}
-		outlineBlur={4}
-		outlineColor={$rgbInvertedColorTween}
-		outlineOpacity={0.75}
-	/>
-</T.Group>
 
 <!-- 
   https://next.threlte.xyz/docs/learn/basics/events

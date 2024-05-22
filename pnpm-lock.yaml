@@ -11,6 +11,9 @@ dependencies:
   google-auth-library:
     specifier: ^9.7.0
     version: 9.7.0
+  reveal.js:
+    specifier: ^4.6.1
+    version: 4.6.1
 
 devDependencies:
   '@dimforge/rapier3d-compat':
@@ -43,6 +46,9 @@ devDependencies:
   '@threlte/theatre':
     specifier: ^2.1.7
     version: 2.1.7(@theatre/core@0.6.2)(@theatre/studio@0.6.2)(@threlte/core@7.3.0)(@threlte/extras@8.11.2)(svelte@4.2.13)(three@0.153.0)
+  '@types/reveal.js':
+    specifier: ^5.0.3
+    version: 5.0.3
   '@types/three':
     specifier: ^0.152.1
     version: 0.152.1
@@ -434,7 +440,7 @@ packages:
       '@sveltejs/kit': ^1.0.0
     dependencies:
       '@sveltejs/kit': 1.30.4(svelte@4.2.13)(vite@4.5.3)
-      import-meta-resolve: 4.0.0
+      import-meta-resolve: 4.1.0
     dev: true
 
   /@sveltejs/kit@1.30.4(svelte@4.2.13)(vite@4.5.3):
@@ -613,6 +619,10 @@ packages:
 
   /@types/pug@2.0.10:
     resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
+    dev: true
+
+  /@types/reveal.js@5.0.3:
+    resolution: {integrity: sha512-gwnK8TR38IOBIORWFrV5/z9lRX4iLke2FBqNgRhXxehaWJFkrzVY2TVzfdX/SX94eugt+OI5l++zDBBSfdzruQ==}
     dev: true
 
   /@types/semver@7.5.8:
@@ -1474,8 +1484,8 @@ packages:
       resolve-from: 4.0.0
     dev: true
 
-  /import-meta-resolve@4.0.0:
-    resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
+  /import-meta-resolve@4.1.0:
+    resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
     dev: true
 
   /imurmurhash@0.1.4:
@@ -1940,6 +1950,11 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
+
+  /reveal.js@4.6.1:
+    resolution: {integrity: sha512-1CW0auaXNPmwmvQ7TwpszwVxMi2Xr5cTS3J3EBC/HHgbPF32Dn7aiu/LKWDOGjMbaDwKQiGmfqcoGQ74HUHCMw==}
+    engines: {node: '>=10.0.0'}
+    dev: false
 
   /rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
