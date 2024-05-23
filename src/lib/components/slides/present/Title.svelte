@@ -6,7 +6,7 @@
 </script>
 
 <Slide>
-	<Slide><h2>{title}</h2></Slide>
+	<Slide><h3>{title}</h3></Slide>
 	<Slide><h4>{subTitle}</h4></Slide>
 </Slide>
 
