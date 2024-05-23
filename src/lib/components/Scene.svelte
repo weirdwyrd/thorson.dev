@@ -37,7 +37,7 @@
 	});
 
 	function onFoxClick(event: Event) {
-		// goto('/presentations/fox')
+		goto('/presentations/fox')
 	}
 
 </script>

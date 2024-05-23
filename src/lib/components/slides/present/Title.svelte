@@ -1,23 +1,18 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Slide from '$lib/components/slides/internal/Slide.svelte';
 
-	let title: any;
-	onMount(() => {
-		let timeout: any;
-		title = new Promise((resolve) => {
-			timeout = setTimeout(() => resolve('Whats nice together?'), 1000);
-		});
-		() => clearTimeout(timeout);
-	});
+	const title: string = 'Parallels of Software Engineering and Role Playing Games';
+	const subTitle: string = 'and how they provide the opportunity to build the skills that make for a great engineer.' 
 </script>
 
 <Slide>
-	<h2>
-		{#await title}
-			Wait a sec...
-		{:then result}
-			{result}
-		{/await}
-	</h2>
+	<Slide><h2>{title}</h2></Slide>
+	<Slide><h4>{subTitle}</h4></Slide>
 </Slide>
+
+<style>
+	h4 {
+		padding-left: 110px;
+		padding-right: 110px;
+	}
+</style>
