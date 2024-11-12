@@ -14,6 +14,7 @@
 	import workingMemory from '$lib/imgs/sepytt/workingMemory.png';
     import controlFlow from '$lib/imgs/sepytt/controlFlow.jpg';
     import patternMatching from '$lib/imgs/sepytt/patternMatching.png';
+	import babysteps from '$lib/imgs/sepytt/babysteps.jpg';
 </script>
 
 <Presentation>
@@ -72,6 +73,9 @@
 		<section id="problemSolving-group">
 			<section>
 				<h5>Approaching a problem</h5>
+				<img src={babysteps} alt="what about bob" />
+			</section>
+			<section>
 				<ul>
 					<li>Outline</li>
 					<li>Implement</li>
