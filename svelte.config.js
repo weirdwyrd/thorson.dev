@@ -8,9 +8,11 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-vercel supports Vercel deployment with Node.js 22.18
+		// adapter-vercel supports Vercel deployment with Node.js 18.x
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter()
+		adapter: adapter({
+			runtime: 'nodejs18.x'
+		})
 	}
 };
 
