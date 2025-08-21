@@ -41,6 +41,9 @@
     "vite": "^4.5.3"
   },
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "camera-controls": "^2.8.3",
     "google-auth-library": "^9.7.0",
