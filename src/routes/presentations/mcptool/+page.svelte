@@ -1,6 +1,18 @@
 <script lang="ts">
 	import Presentation from '$lib/components/Presentation.svelte';
 	import 'reveal.js/dist/reveal.css';
+
+	import morphDataikuUrl from '$lib/imgs/mcptool/morphdataiku.png';
+	import mcpUsbUrl from '$lib/imgs/mcptool/mcpusb.png';
+	import mcpArchUrl from '$lib/imgs/mcptool/mcparch.jpg';
+	import responsibilityUrl from '$lib/imgs/mcptool/responsibility.png';
+	import gpt5StoneAgeUrl from '$lib/imgs/mcptool/gpt5stoneage.jpg';
+	import gpt5StonksUrl from '$lib/imgs/mcptool/gpt5stonks.png';
+	import clippyHelpUrl from '$lib/imgs/mcptool/clippyhelp.png';
+	import superClippyUrl from '$lib/imgs/mcptool/superclippy.png';
+	import cursorExampleUrl from '$lib/imgs/mcptool/cursorexample.png';
+	import shopify1Url from '$lib/imgs/mcptool/shopfiyagentexample1.png';
+	import shopify2Url from '$lib/imgs/mcptool/shopifyagentexample2.png';
 </script>
 
 <Presentation>
@@ -27,15 +39,13 @@
 				<ul>
 					<li>Where we are: PowerBI, Dataiku, Snowflake, Stibo</li>
 					<li>Where we're going: natural language over data, LLM powered insights</li>
-					<li>
-						This is going to impact all of us and the work that we will have, if it hasn't already!
-					</li>
+					<li>From oral tradition to the library to Google to ChatGPT to ...</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: AI Revolution in Data Consulting</p>
+					<img src={morphDataikuUrl} alt="Morph Dataiku" />
 				</div>
 			</section>
 
@@ -43,15 +53,15 @@
 			<section>
 				<h3>The track that we are on</h3>
 				<ul>
-					<li>From oral tradition to the library to Google to ChatGPT to ...</li>
+					<li>So much progress in such a short time, world already changing</li>
 					<li>What will allow us to take that next step?</li>
 					<li>Tools! (via MCP!) we are entering the Stone Age</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px;  display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: Evolution Track</p>
+					<img src={gpt5StoneAgeUrl} alt="GPT5 Stone Age" />
 				</div>
 			</section>
 		</section>
@@ -73,11 +83,11 @@
 						Enables AI to "talk" to any system, database, or tool that has MCP implementations
 					</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: MCP as Rosetta Stone</p>
+					<img src={mcpUsbUrl} alt="MCP as Rosetta Stone" />
 				</div>
 			</section>
 
@@ -95,11 +105,11 @@
 						certainly do it
 					</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: MCP Flow</p>
+					<img src={mcpArchUrl} alt="MCP Flow" />
 				</div>
 			</section>
 
@@ -116,8 +126,10 @@
 						-- for all the same reasons you have an API for a website and not a direct DB connection
 						to the client
 					</li>
+					<li>TLDR: more opportunities!</li>
+					<li>Elevate every user into a power user, better AI usage, personal knowledge banks!</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
 					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
@@ -136,18 +148,15 @@
 			<section>
 				<h3>AI Sales Opportunities</h3>
 				<ul>
-					<li>
-						GPT5 just made a big deal out of the fact that they can call tools now (throw back to
-						Stone Age ref)
-					</li>
+					<li>GPT5 just made a big deal out of the fact that they can call tools now!</li>
 					<li>Using the tools keeps us as thought leaders in the space</li>
 					<li>We have the ability to make the tools too!</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px;  display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: AI Sales Opportunities</p>
+					<img src={gpt5StonksUrl} alt="GPT5 Stonks" />
 				</div>
 			</section>
 
@@ -163,11 +172,11 @@
 						AI interface
 					</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: Reduced Friction</p>
+					<img src={clippyHelpUrl} alt="Clippy Help" />
 				</div>
 			</section>
 
@@ -179,12 +188,37 @@
 					<li>Ability for improvement via instruction and with rules</li>
 					<li>Your AI becomes your digital colleague</li>
 				</ul>
-				<!-- Placeholder for image -->
+
 				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+					style="height: 300px;  display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: Agentic Tools</p>
+					<img src={superClippyUrl} alt="Super Clippy" />
 				</div>
+			</section>
+
+			<!-- Real-World Examples -->
+			<section>
+				<h3>Examples</h3>
+				<ul>
+					<li>Cursor: AI-powered development</li>
+					<li>Shopify's integrated AI</li>
+					<li>GitHub Copilot with MCP extensions</li>
+					<li>Future: AI that can query your CRM, update your BI dashboards, etc.</li>
+				</ul>
+
+				<div
+					style="height: 300px; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
+				>
+					<img src={cursorExampleUrl} alt="Cursor Example" />
+				</div>
+			</section>
+
+			<section>
+				<img src={shopify1Url} alt="Shopify Agent Example 1" />
+			</section>
+
+			<section>
+				<img src={shopify2Url} alt="Shopify Agent Example 2" />
 			</section>
 
 			<!-- Responsibility -->
@@ -202,28 +236,11 @@
 					</li>
 					<li>With great power comes great responsibility</li>
 				</ul>
-				<!-- Placeholder for image -->
-				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
-				>
-					<p style="color: #666;">Image: AI Responsibility</p>
-				</div>
-			</section>
 
-			<!-- Real-World Examples -->
-			<section>
-				<h3>Examples</h3>
-				<ul>
-					<li>Cursor: AI-powered development</li>
-					<li>Shopify's integrated AI</li>
-					<li>GitHub Copilot with MCP extensions</li>
-					<li>Future: AI that can query your CRM, update your BI dashboards, etc.</li>
-				</ul>
-				<!-- Placeholder for image -->
 				<div
 					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
 				>
-					<p style="color: #666;">Image: Real-World Examples</p>
+					<img src={responsibilityUrl} alt="Great Power" />
 				</div>
 			</section>
 		</section>
@@ -251,12 +268,6 @@
 					<li>AI that knows your business inside and out</li>
 					<li>Meeting notes integration and synthesis (this could be everyone really!)</li>
 				</ul>
-				<!-- Placeholder for image -->
-				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
-				>
-					<p style="color: #666;">Image: Sales & Marketing AI</p>
-				</div>
 			</section>
 
 			<!-- Data Team Transformation -->
@@ -273,12 +284,6 @@
 						can reference
 					</li>
 				</ul>
-				<!-- Placeholder for image -->
-				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
-				>
-					<p style="color: #666;">Image: Data Team AI</p>
-				</div>
 			</section>
 
 			<!-- Consulting Edge -->
@@ -295,12 +300,6 @@
 					</li>
 					<li>Probably 10000 more great ideas!</li>
 				</ul>
-				<!-- Placeholder for image -->
-				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
-				>
-					<p style="color: #666;">Image: Consulting AI</p>
-				</div>
 			</section>
 		</section>
 
