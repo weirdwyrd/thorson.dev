@@ -1,8 +1,7 @@
 {
   "functions": {
     "**/*.js": {
-      "runtime": "nodejs18.x",
-      "version": "2"
+      "runtime": "nodejs18.x"
     }
   }
 }
