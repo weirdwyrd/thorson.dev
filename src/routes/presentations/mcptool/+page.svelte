@@ -126,15 +126,10 @@
 						-- for all the same reasons you have an API for a website and not a direct DB connection
 						to the client
 					</li>
-					<li>TLDR: more opportunities!</li>
 					<li>Elevate every user into a power user, better AI usage, personal knowledge banks!</li>
+					<li>TLDR: more opportunities for everyone!</li>
 				</ul>
 
-				<div
-					style="height: 300px; background-color: #333; display: flex; align-items: center; justify-content: center; margin: 20px 0;"
-				>
-					<p style="color: #666;">Image: Software Engineers & MCP</p>
-				</div>
 			</section>
 		</section>
 
